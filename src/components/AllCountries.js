@@ -1,22 +1,26 @@
 import { Country } from './Country.js';
 
-export const AllCountries = ({countriesToDisplay}) => {
+
+export const AllCountries = ({countriesToDisplay, theme}) => {
     
     const displayCountries = countriesToDisplay.map(country =>
+    
        <Country 
+       theme={theme}
        flag={country.flag}
        name={country.name} 
        population={country.population}
        region={country.region}
        capital={country.capital}
        key={country.name}/> 
+   
         )
     const styles = {
         color: 'white',
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        //backgroundColor: 'hsl(207, 26%, 17%)'
+        
     }
     return (
         <div>
