@@ -1,21 +1,20 @@
 import { Link } from 'react-router-dom';
 export const Country = ({name, population, region, capital, flag, theme}) => {
-    const styles = {
-        margin: 50,
-        width: 220,
-        backgroundColor: theme === 'light'? 'hsl(0, 0%, 100%': 'hsl(209, 23%, 22%)',
-        color: theme === 'light'? 'hsl(200, 15%, 8%)' : 'hsl(0, 0%, 100%'
-    }
+    
 
     return (
-        <div style={styles}>
         <Link to={`/details/${name}`}>
-        <img src={flag} style={{width: 220, height: 140}} alt={`Flag of ${name}`}  />
-        </Link>
-        <p>{name}</p>
-        <p>Population: {population}</p>
-        <p>Region: {region}</p>
-        <p>Capital: {capital}</p>
+        <section>
+        
+        <img src={flag} style={{width:264, height:170}} alt={`Flag of ${name}`}  />
+        
+        <div className='country-stats'>
+        <h3>{name}</h3>
+        <span className='country-stats-bold-span'>Population:</span> <span>{population}</span><br/>
+        <span className='country-stats-bold-span'>Region:</span> <span>{region}</span><br/>
+        <span className='country-stats-bold-span'>Capital:</span> <span>{capital || 'N/A'}</span>
         </div>
+        </section>
+        </Link>
     )
 }

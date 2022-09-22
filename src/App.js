@@ -1,11 +1,10 @@
 import { Header } from './components/Header';
-import { Search } from './components/Search';
-import { Filter } from './components/Filter';
 import { AllCountries } from './components/AllCountries';
 import { Details } from './components/Details';
 import './App.css';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { SearchAndFilter } from './components/SearchAndFilter';
 
 
 function App() {
@@ -30,8 +29,8 @@ function App() {
   }
 
   const briefCountryInfo = state.allCountries.map(country => ({
-    flag: country.flags.svg,
-    name: country.name.common,
+    flag: country.flags.png,
+    name: country.name,
     population: country.population,
     region: country.region,
     capital: country.capital
@@ -45,20 +44,18 @@ function App() {
     country.name.toLowerCase().includes(state.searchTerm.toLocaleLowerCase()))
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    setState({...state, loading: true });
+    fetch("https://restcountries.com/v2/all")
     .then(response => response.json())
       
-    .then(data => setState({...state, allCountries: data}))
+    .then(data => setState({...state, allCountries: data, loading: false}))
   },[ ])
 
-  const style = {
-    backgroundColor: state.theme === 'light'? 'hsl(0, 0%, 98%)' : 'hsl(207, 26%, 17%)'
-  }
 
   return (
 
     <Router>
-      <div style={style}>
+      <div>
         <Header 
         theme={state.theme}
         toggleTheme={toggleTheme}
@@ -70,22 +67,18 @@ function App() {
         />  
         </Route> 
         <Route exact path='/'>
-        <Search 
-        theme={state.theme}
-        value={state.searchTerm}
-        searchInputHandler={searchInputHandler}
-        />
-        </Route>
-        <Route exact path='/'>
-        <Filter 
-        theme={state.theme}
-        value={state.regionSelected}
-        regionSelectHandler={regionSelectHandler}
-        />
+          <SearchAndFilter
+          theme={state.theme}
+          searchTerm={state.searchTerm}
+          regionSelected={state.regionSelected}
+          searchInputHandler={searchInputHandler}
+          regionSelectHandler={regionSelectHandler}
+          />
         </Route>
         <Route exact path='/'>
         <AllCountries 
         theme={state.theme}
+        loading={state.loading}
         countriesToDisplay={countriesToDisplay}
         />  
         </Route> 

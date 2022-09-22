@@ -1,7 +1,7 @@
 import { Country } from './Country.js';
 
 
-export const AllCountries = ({countriesToDisplay, theme}) => {
+export const AllCountries = ({countriesToDisplay, theme, loading}) => {
     
     const displayCountries = countriesToDisplay.map(country =>
     
@@ -9,23 +9,16 @@ export const AllCountries = ({countriesToDisplay, theme}) => {
        theme={theme}
        flag={country.flag}
        name={country.name} 
-       population={country.population}
+       population={country.population.toLocaleString()}
        region={country.region}
        capital={country.capital}
        key={country.name}/> 
    
         )
-    const styles = {
-        color: 'white',
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        
-    }
+    
     return (
-        <div>
-        <h2>ALL COUNTRIES</h2>
-        <div style={styles}>{displayCountries}</div>
-        </div>
+        <main >
+            {loading? <div className='loader'></div> : displayCountries}
+        </main>
     )
 }
