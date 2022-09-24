@@ -13,7 +13,7 @@ export const Details = ({countries, theme}) => {
 
     return (
         <div className='details'>
-        <Link to='/'><div  className='back-arrow'><i class="fa fa-long-arrow-left"></i>    Back</div></Link>
+        <Link to='/REST-Country-API'><div  className='back-arrow'><i class="fa fa-long-arrow-left"></i>    Back</div></Link>
         <div className='details-content'>
         <img src={details.flags.png} alt='flag' />
         <div className='details-text'>

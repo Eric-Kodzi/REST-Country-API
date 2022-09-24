@@ -62,23 +62,23 @@ const countriesToDisplay = selectedByRegion.filter(country =>
         toggleTheme = {toggleTheme}
         />
 
-        <Route path = '/details/:name' exact>
+        <Route path = '/REST-Country-API/details/:name'>
         <Details 
         theme = {state.theme}
         countries = {state.allCountries}
         /> 
         </Route> 
 
-        <Route exact path = 'https://eric-kodzi.github.io/REST-Country-API/'>
+        <Route exact path = '/REST-Country-API'>
           <SearchAndFilter
           searchTerm = {state.searchTerm}
           regionSelected = {state.regionSelected}
           searchInputHandler = {searchInputHandler}
           regionSelectHandler = {regionSelectHandler}
           />
-        </Route>
+         </Route> 
 
-        <Route exact path = '/'>
+        <Route exact path = '/REST-Country-API'>
         <AllCountries 
         loading = {state.loading}
         countriesToDisplay = {countriesToDisplay}

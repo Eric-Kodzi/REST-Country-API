@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Country = ({name, population, region, capital, flag }) => {
     
     return (
-        <Link to = {`/details/${name}`}>
+        <Link to = {`/REST-Country-API/details/${name}`}>
          <section>
            <img src = {flag} style = {{width:264, height:170}} alt = {`Flag of ${name}`}  />
            <div className='country-stats'>
