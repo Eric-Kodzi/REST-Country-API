@@ -7,10 +7,7 @@ export const ToggleTheme = ({theme, toggleTheme}) => {
  const  elemColor = theme === 'light'?  'hsl(0, 0%, 100%':'hsl(200, 15%, 8%)';
  const searchInputColor = theme === 'light'?  'white':'gray';
 
- const style = {
-    backgroundColor: theme === 'light'? 'hsl(0, 0%, 100%': 'hsl(209, 23%, 22%)',
-    color: theme === 'light'? 'hsl(200, 15%, 8%)' : 'hsl(0, 0%, 100%'
-}
+ 
 
  const changeThemeStyle = () => {
     toggleTheme();
@@ -24,7 +21,7 @@ export const ToggleTheme = ({theme, toggleTheme}) => {
 
     return (
         <>
-        <button style={style} onClick={changeThemeStyle} >
+        <button className="toggle-box" onClick={changeThemeStyle} >
         <i class="fas fa-moon"></i>  {toggleText}
         </button>
         </>

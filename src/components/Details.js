@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { countryListAlpha3 } from './countryCodes';
+import { countryListAlpha3 } from '../Utilities/countryCodes';
 
 export const Details = ({countries, theme}) => {
 
@@ -32,7 +32,7 @@ export const Details = ({countries, theme}) => {
            <span className='details-text-bold'>Languages:</span> <span> {details.languages.map(lang => lang.name).toString()}</span><br/><br/><br/><br/>
            </div>
         </div>
-        <div className='borders-container'><span><strong>Border Countries: </strong></span><div className='border-countries-list'>{borderCountries}</div></div>
+        <div className='borders-container'><span><strong>Border {!Object.keys(details).includes('borders')? 'Countries': details.borders.length === 1? 'Country' : 'Countries'}: </strong></span><div className='border-countries-list'>{borderCountries}</div></div>
         </div>
         </div>
         </div>
