@@ -69,7 +69,7 @@ const countriesToDisplay = selectedByRegion.filter(country =>
         /> 
         </Route> 
 
-        <Route exact path = '/'>
+        <Route exact path = 'https://eric-kodzi.github.io/REST-Country-API/'>
           <SearchAndFilter
           searchTerm = {state.searchTerm}
           regionSelected = {state.regionSelected}
