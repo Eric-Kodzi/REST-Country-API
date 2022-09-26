@@ -5,7 +5,7 @@ export const Details = ({countries, theme}) => {
 
     const {name }= useParams();
 
-    const details = countries.filter(country => country.name === name)[0];
+    const details = countries.filter(country => country.name === name || country.nativeName == name)[0];
     
 
     const borderCountries = Object.keys(details).includes('borders')? borders(details.borders) : 'Has no border countries';
@@ -41,5 +41,5 @@ export const Details = ({countries, theme}) => {
 
 
 const borders = (arr) => {
- return arr.map(border => <div className='border-country'>{countryListAlpha3[border]}</div>)
+ return arr.map(border => <Link to = {`/REST-Country-API/details/${countryListAlpha3[border]}`}><div className='border-country'>{countryListAlpha3[border]}</div></Link>)
 }

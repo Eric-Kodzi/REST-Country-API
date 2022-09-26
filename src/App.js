@@ -41,7 +41,7 @@ const selectedByRegion = state.regionSelected === 'all'? briefCountryInfo :
     briefCountryInfo.filter( country => country.region === state.regionSelected);
 
 const countriesToDisplay = selectedByRegion.filter(country => 
-    country.name.toLowerCase().includes(state.searchTerm.toLocaleLowerCase()))
+    country.name.toLowerCase().includes(state.searchTerm.toLocaleLowerCase())).sort();
 
   useEffect(() => {
     setState({...state, loading: true });
