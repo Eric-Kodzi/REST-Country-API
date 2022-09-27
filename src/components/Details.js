@@ -1,15 +1,26 @@
 import { Link, useParams } from 'react-router-dom';
-import { countryListAlpha3 } from '../Utilities/countryCodes';
+
 
 export const Details = ({countries, theme}) => {
 
     const {name }= useParams();
 
-    const details = countries.filter(country => country.name === name || country.nativeName == name)[0];
+    const details = countries.filter(country => country.name === name || country.nativeName === name)[0];
     
+    const currencies = Object.keys(details).includes('currencies')? details.currencies[0].name : 'N/A';
+
+    const borders = (arr) => {
+        return arr.map(code => {
+           const borderCountry = countries.filter(country => country.alpha3Code === code)[0];
+            return <Link to = {`/REST-Country-API/details/${borderCountry.name}`} >
+                <div className='border-country'>
+                {borderCountry.name}
+                </div>
+         </Link>
+        })
+    }
 
     const borderCountries = Object.keys(details).includes('borders')? borders(details.borders) : 'Has no border countries';
-    const currencies = Object.keys(details).includes('currencies')? details.currencies[0].name : 'N/A';
 
     return (
         <div className='details'>
@@ -37,9 +48,8 @@ export const Details = ({countries, theme}) => {
         </div>
         </div>
     )
+
 }
 
 
-const borders = (arr) => {
- return arr.map(border => <Link to = {`/REST-Country-API/details/${countryListAlpha3[border]}`}><div className='border-country'>{countryListAlpha3[border]}</div></Link>)
-}
+
